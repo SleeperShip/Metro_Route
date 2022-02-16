@@ -4,10 +4,10 @@ class MyLinkedList {
     int size;
     
     class Node {
-        int val;
+        String val;
         Node next;
         
-        public Node(int val) {
+        public Node(String val) {
             this.val = val;
         }
     }
@@ -18,9 +18,9 @@ class MyLinkedList {
         size = 0;
     }
     
-    public int get(int index) {
+    public String get(int index) {
         if (index < 0 || index >= size) {
-            return -1;
+            return "";
         }
         
         Node nodeRef = head;
@@ -33,7 +33,7 @@ class MyLinkedList {
         return nodeRef.val;
     }
     
-    public void addAtHead(int val) {
+    public void addAtHead(String val) {
         Node newNode = new Node(val);
         
         newNode.next = head;
@@ -44,7 +44,7 @@ class MyLinkedList {
         size++;
     }
     
-    public void addAtTail(int val) {
+    public void addAtTail(String val) {
         Node newNode = new Node(val);
         
         if (head == null) {
@@ -57,7 +57,7 @@ class MyLinkedList {
         size++;
     }
     
-    public void addAtIndex(int index, int val) {
+    public void addAtIndex(int index, String val) {
         if (index < 0 || index > size) {
             return;
         }
@@ -110,14 +110,13 @@ class MyLinkedList {
         }
         size--;
     }
+    
+    public void printList() {
+        Node nodeRef = head;
+        
+        while (nodeRef != null) {
+            System.out.println(nodeRef.val);
+            nodeRef = nodeRef.next;
+        }
+    }
 }
-
-/**
- * Your MyLinkedList object will be instantiated and called as such:
- * MyLinkedList obj = new MyLinkedList();
- * int param_1 = obj.get(index);
- * obj.addAtHead(val);
- * obj.addAtTail(val);
- * obj.addAtIndex(index,val);
- * obj.deleteAtIndex(index);
- */
